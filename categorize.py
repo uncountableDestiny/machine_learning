@@ -6,5 +6,14 @@ X = [
     [90, 1.89, 'volleyball'],
     [70, 1.70, 'soccer']
 ]
+transformers = [
+    ['category vectorizer', OneHotEncoder(), [2]]
+]
 
-ct = ColumnTransformer()
+
+ct = ColumnTransformer(transformers, remainder='passthrough')
+
+ct.fit(X)
+X = ct.transform(X)
+
+print(X)
